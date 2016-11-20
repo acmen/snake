@@ -10,6 +10,11 @@
 <script src="./bower_components/zepto/zepto.min.js"></script>
 <script src="./js/snake.js"></script>
 <script>
+  document.body.addEventListener('touchmove', function(evt) {
+    if(!evt._isScroller) {
+      evt.preventDefault();
+    }
+  });
   var _snake;
   $(function(){
     _snake = new snake();
