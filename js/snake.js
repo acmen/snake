@@ -251,7 +251,7 @@ function snake(){
             x: data.x + gap.x,
             y: data.y + gap.y
           });
-          this.options.snake_data.splice(0,1);
+
         }
 
         var head_data = this.options.snake_data[this.options.snake_data.length - 1];
@@ -262,6 +262,8 @@ function snake(){
         var food_index = this.check_food(head_data.x, head_data.y);
         if(food_index !== false){
           this.eat_food(food_index);
+        }else{
+          this.options.snake_data.splice(0,1);
         }
         this.options.ctx.clearRect(0,0, this.options.width, this.options.height);
         this.draw();
