@@ -251,7 +251,13 @@ function snake(){
             x: data.x + gap.x,
             y: data.y + gap.y
           });
-
+        }else{
+          var first_data = this.options.snake_data[this.options.snake_data.length - 1];
+          var second_data = this.options.snake_data[this.options.snake_data.length - 2];
+          this.options.snake_data.push({
+            x: first_data.x + (first_data.x - second_data.x),
+            y: first_data.y + (first_data.y - second_data.y)
+          });
         }
 
         var head_data = this.options.snake_data[this.options.snake_data.length - 1];
