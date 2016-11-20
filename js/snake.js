@@ -268,7 +268,8 @@ function snake(){
         var food_index = this.check_food(head_data.x, head_data.y);
         if(food_index !== false){
           this.eat_food(food_index);
-        }else{
+        }
+        if(4 * (this.options.init_snake_length - 1) + 1 < this.options.snake_data.length){
           this.options.snake_data.splice(0,1);
         }
         this.options.ctx.clearRect(0,0, this.options.width, this.options.height);
@@ -317,6 +318,7 @@ function snake(){
       var food_item = this.options.food_data[i];
       this.options.food_data.splice(i, 1);
       this.options.score += food_item["score"];
+      this.options.init_snake_length += 1;
       this.score_change();
     }
   };
