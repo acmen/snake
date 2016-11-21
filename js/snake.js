@@ -5,7 +5,7 @@ function snake(){
   return {
     options: {
       last_draw_time: 0,
-      speed_time: 100,
+      speed_time: 50,
       canvas: false,
       ctx: false,
       animation: false,
@@ -28,7 +28,7 @@ function snake(){
         direction_data: []
       },
       init_food_num: 4,
-      foods_num: 30,
+      foods_num: 20,
       food_conf: {
         width: 25,
         height: 25
@@ -40,7 +40,7 @@ function snake(){
         }
       ],
       init_obstacle_num: 2,
-      obstacle_num: 30,
+      obstacle_num: 20,
       obstacle_conf: {
         width: 25,
         height: 25
@@ -72,8 +72,8 @@ function snake(){
       this.options.width = document.body.clientHeight;
       this.options.height = document.body.clientWidth;
       this.options.canvas = document.createElement("canvas");
-      this.options.canvas.setAttribute("class", "rotate90");
-      this.options.canvas.setAttribute("stype", "margin-left: "+this.options.height+"px");
+      // this.options.canvas.setAttribute("class", "rotate90");
+      // this.options.canvas.setAttribute("stype", "margin-left: "+this.options.height+"px");
       this.options.canvas.width = this.options.width;
       this.options.canvas.height = this.options.height;
       this.options.ctx = this.options.canvas.getContext("2d");
