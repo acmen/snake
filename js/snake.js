@@ -69,11 +69,11 @@ function snake(){
     },
     init: function(){
       // 创建画布
-      this.options.width = document.body.clientHeight;
-      this.options.height = document.body.clientWidth;
+      this.options.width = document.body.clientWidth;
+      this.options.height = document.body.clientHeight;
       this.options.canvas = document.createElement("canvas");
-      this.options.canvas.setAttribute("class", "rotate90");
-      this.options.canvas.setAttribute("stype", "margin-left: "+this.options.height+"px");
+      // this.options.canvas.setAttribute("class", "rotate90");
+      // this.options.canvas.setAttribute("stype", "margin-left: "+this.options.height+"px");
       this.options.canvas.width = this.options.width;
       this.options.canvas.height = this.options.height;
       this.options.ctx = this.options.canvas.getContext("2d");
