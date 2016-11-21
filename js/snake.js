@@ -79,8 +79,8 @@ function snake(){
       this.options.ctx = this.options.canvas.getContext("2d");
       document.body.appendChild(this.options.canvas);
 
-      this.options.snake_conf.body_width = Math.floor(this.options.width / 30);
-      this.options.snake_conf.body_height = Math.floor(this.options.width / 30);
+      this.options.snake_conf.body_width = Math.floor(this.options.width / 20);
+      this.options.snake_conf.body_height = Math.floor(this.options.width / 20);
       this.options.snake_conf.head_width = this.options.snake_conf.body_width + 4;
       this.options.snake_conf.head_height = this.options.snake_conf.body_height + 4;
       this.options.snake_conf.snake_body_distance = Math.floor(this.options.snake_conf.body_width * 8 / 10);
