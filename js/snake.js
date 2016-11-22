@@ -245,7 +245,7 @@ function snake(){
           x: 0,
           y: 0
         };
-        if(this.options.snake_conf.direction_data.length != 0){
+        if(this.options.snake_conf.direction_data.length !== 0){
           gap = this.options.snake_conf.direction_data[0];
           this.options.snake_conf.direction_data.splice(0, 1);
           var data = this.options.snake_data[this.options.snake_data.length - 1];

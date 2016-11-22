@@ -235,3 +235,49 @@ body {
   -o-transform-origin: 0 0;
   -webkit-transform-origin: 0 0;
 }
+.index-start-game{
+  position: absolute;
+  left: 4.3%;
+  top: 47%;
+  margin-top: 20px;
+  width: 18.21%;
+}
+.main-bg{
+  position : absolute;
+  width: 72.66%;
+  top: 7.5%;
+  left :2.34%;
+  height :85%;
+}
+.main-bg-color{
+  background: rgba(0, 170, 165, 0.6);
+}
+.choose-body{
+  position: absolute;
+  top: 0;
+  left :0;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.choose-item{
+  display : table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.choose-item img{
+  width: 40%;
+}
+.rule-text{
+  position : absolute;
+  width: 80%;
+  left: 10%;
+  top: 5%;
+  height: 65%;
+}
+.rule-go{
+  position : absolute;
+  bottom: 5%;
+  width: 20%;
+  left: 40%;
+}

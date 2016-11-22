@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>贪吃蛇</title>
+  <link href="./css/main.css" rel="stylesheet"/>
+</head>
+<body>
+  <div class="main">
+    <img src="./img/start/bg.png" style="width: 100%; height: 100%">
+    <div class="main-bg choose">
+      <img src="img/start/choose-bg.png" style="width: 100%; height: 100%"/>
+      <div class="choose-body">
+        <div class="choose-item" onclick="show_rule()">
+          <img src="./img/start/choose-green.png" />
+        </div>
+        <div class="choose-item" onclick="show_rule()">
+          <img src="./img/start/choose-red.png" />
+        </div>
+      </div>
+    </div>
+    <div class="main-bg rule" style="display: none">
+      <img src="img/start/base-bg.png" style="width: 100%; height: 100%"/>
+      <div class="main-bg-color" style="min-width: 100%; min-height: 100%; position: absolute; top: 0; left: 0;"></div>
+      <div class="rule-text">
+        <img src="./img/start/game-rule.png" style="width: 100%; height: 100%;"/>
+      </div>
+      <div class="rule-go" onclick="window.location.href='index.html'">
+        <img src="./img/index/start-game.png" style="width: 100%; height: 100%;"/>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+<script src="./bower_components/zepto/zepto.min.js"></script>
+<script src="./js/common.js"></script>
+<script>
+  $(function(){
+    init($(".main")[0]);
+  });
+
+  function show_rule() {
+    $(".choose").hide();
+    $(".rule").show();
+  }
+</script>
+</html>
