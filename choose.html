@@ -23,7 +23,7 @@
       <img src="img/start/base-bg.png" style="width: 100%; height: 100%"/>
       <div class="main-bg-color" style="min-width: 100%; min-height: 100%; position: absolute; top: 0; left: 0;"></div>
       <div class="rule-text">
-        <img src="./img/start/game-rule.png" style="width: 100%; height: 100%;"/>
+        <img src="./img/start/game-rule.png" style="max-width: 100%; max-height: 100%;"/>
       </div>
       <div class="rule-go" onclick="window.location.href='index.html'">
         <img src="./img/index/start-game.png" style="width: 100%; height: 100%;"/>
@@ -36,6 +36,11 @@
 <script src="./bower_components/zepto/zepto.min.js"></script>
 <script src="./js/common.js"></script>
 <script>
+  document.body.addEventListener('touchmove', function(evt) {
+    if(!evt._isScroller) {
+      evt.preventDefault();
+    }
+  });
   $(function(){
     init($(".main")[0]);
   });

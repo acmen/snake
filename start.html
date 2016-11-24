@@ -14,6 +14,11 @@
 <script src="./bower_components/zepto/zepto.min.js"></script>
 <script src="./js/common.js"></script>
 <script>
+  document.body.addEventListener('touchmove', function(evt) {
+    if(!evt._isScroller) {
+      evt.preventDefault();
+    }
+  });
   $(function(){
     init($(".main")[0]);
   });

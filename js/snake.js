@@ -65,19 +65,33 @@ function snake(){
       touch_conf: {
         start_x: 0,
         start_y: 0,
+      },
+      change_score: this.score_change,
+      game_over: function(score){
+
       }
     },
-    init: function(){
-      // 创建画布
-      this.options.width = document.body.clientWidth;
-      this.options.height = document.body.clientHeight;
-      this.options.canvas = document.createElement("canvas");
-      // this.options.canvas.setAttribute("class", "rotate90");
-      // this.options.canvas.setAttribute("stype", "margin-left: "+this.options.height+"px");
+    init: function(options){
+      if(options instanceof Object){
+        for(var name in options){
+          this.options[name] = options[name];
+        }
+      }
+      if(this.options.width == 0 || this.options.height == 0){
+        // 创建画布
+        this.options.width = document.body.clientWidth;
+        this.options.height = document.body.clientHeight;
+      }
+
+      if(!this.options.canvas){
+        this.options.canvas = document.createElement("canvas");
+
+        document.body.appendChild(this.options.canvas);
+      }
       this.options.canvas.width = this.options.width;
       this.options.canvas.height = this.options.height;
       this.options.ctx = this.options.canvas.getContext("2d");
-      document.body.appendChild(this.options.canvas);
+
 
       this.options.snake_conf.body_width = Math.floor(this.options.width / 20);
       this.options.snake_conf.body_height = Math.floor(this.options.width / 20);
@@ -208,7 +222,7 @@ function snake(){
     draw_image: function(img, x, y, width, height){
       this.options.ctx.drawImage(img, x, y, width, height);
     },
-    score_change: function(){
+    score_change: function(score){
       console.log("当前分数%d", this.options.score);
     },
     start: function(_snake){
@@ -305,7 +319,7 @@ function snake(){
     },
     stop_game: function(){
       window.cancelAnimationFrame(this.options.animation);
-      alert("游戏结束");
+      this.options.game_over(this.options.score);
     },
     check_food: function(x, y){
       for(var i = 0 ; i < this.options.food_data.length; i++){
@@ -321,7 +335,7 @@ function snake(){
       this.options.food_data.splice(i, 1);
       this.options.score += food_item["score"];
       this.options.init_snake_length += 1;
-      this.score_change();
+      this.options.change_score(this.options.score);
     }
   };
 }
