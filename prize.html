@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>贪吃蛇</title>
+  <link href="./css/main.css" rel="stylesheet"/>
+</head>
+<body>
+  <div class="main">
+    <img src="./img/start/bg.webp" style="width: 100%; height: 100%">
+    <div class="main-bg">
+      <img src="img/start/base-bg.webp" style="width: 100%; height: 100%"/>
+      <div class="share-text" style="top: 20%">
+        <img src=""/>
+      </div>
+      <div class="share-btn" style="top: 70%">
+        <img src="./img/prize/get-prize-btn.png"/>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+<script src="./bower_components/zepto/zepto.min.js"></script>
+<script src="./js/common.js"></script>
+<script>
+  document.body.addEventListener('touchmove', function(evt) {
+    if(!evt._isScroller) {
+      evt.preventDefault();
+    }
+  });
+  $(function(){
+    init($(".main")[0]);
+    var i = getUrlParam("i");
+    var img = "img/prize/prize1-text.png";
+    switch (i){
+      case "1":{
+        img = "img/prize/prize1-text.png";
+        break;
+      }
+      case "2":{
+        img = "img/prize/prize2-text.png";
+        break;
+      }
+      case "3":{
+        img = "img/prize/no-prize.png";
+        $(".share-btn").hide();
+        break;
+      }
+      default:{
+        img = "img/prize/no-prize.png";
+        $(".share-btn").hide();
+        break;
+      }
+    }
+    $(".share-text img").attr("src", img);
+    $(".share-btn").on("click", go_info);
+  });
+
+  function go_info() {
+    window.location.href="./info.html";
+  }
+
+</script>
+</html>

@@ -7,9 +7,9 @@
 </head>
 <body>
 <div class="main" style="position: relative">
-  <img src="./img/start/bg.png" style="width: 100%; height: 100%">
+  <img src="./img/start/bg.webp" style="width: 100%; height: 100%">
   <div class="main-bg">
-    <img src="img/start/base-bg.png" style="width: 100%; height: 100%"/>
+    <img src="img/start/base-bg.webp" style="width: 100%; height: 100%"/>
     <canvas id="snake-main" style="width: 100%; height: 100%; position: absolute; left:0; top: 0;">
 
     </canvas>
@@ -64,8 +64,9 @@
     var height = $(".main-bg").height();
     _snake = new snake();
     _snake.init({
-      width: width,
-      height: height,
+      width: height,
+      height: width,
+      is_flip: true,
       canvas: $("#snake-main")[0],
       change_score: change_score,
       game_over: game_over
@@ -78,15 +79,11 @@
   }
   
   function game_over(score) {
-    console.log(score + "阿斯顿");
-  }
-  
-  function show_share() {
-    
-  }
-  
-  function show_game() {
-    
+    if(score < 10){
+      window.location.href="./share.html?s="+score;
+    }else{
+      window.location.href="./go-game.html?s="+score;
+    }
   }
 
 </script>

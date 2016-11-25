@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>贪吃蛇</title>
+  <link href="./css/main.css" rel="stylesheet"/>
+</head>
+<body>
+  <div class="main">
+    <img src="./img/start/bg.webp" style="width: 100%; height: 100%">
+    <div class="main-bg">
+      <img src="img/start/base-bg.webp" style="width: 100%; height: 100%"/>
+      <div class="game-pan">
+        <img src="img/prize/circle.webp" style="max-width: 100%; max-height: 100%"/>
+      </div>
+      <div class="game-point">
+        <img src="img/prize/point.png" style="max-width: 100%; max-height: 100%"/>
+      </div>
+      <div class="game-circle-btn">
+        <img src="img/prize/go-game-btn.png" style="max-width: 100%; max-height: 100%"/>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="./js/jquery-2.2.3.min.js"></script>
+<script src="./js/jQueryRotate.js"></script>
+<script src="./js/common.js"></script>
+<script>
+  document.body.addEventListener('touchmove', function(evt) {
+    if(!evt._isScroller) {
+      evt.preventDefault();
+    }
+  });
+  $(function(){
+    init($(".main")[0]);
+    $(".game-circle-btn").on("click", start_click);
+  });
+  
+  function start_click() {
+    hide_btn();
+    start_game();
+  }
+  
+  function hide_btn(){
+    $(".game-circle-btn").hide();
+  }
+  
+  function start_game() {
+
+    var point_map = [
+      {
+        "angle": 0,
+        "type": 1
+      },
+      {
+        "angle": 60,
+        "type": 3
+      },
+      {
+        "angle": 120,
+        "type": 2
+      },
+      {
+        "angle": 180,
+        "type": 3
+      },
+      {
+        "angle": 240,
+        "type": 2
+      },
+      {
+        "angle": 300,
+        "type": 3
+      }
+    ];
+    var prize = point_map[Math.floor(Math.random() * 6)];
+
+    var ele = $(".game-pan img");
+    ele.stopRotate();
+    //调用转动方法，设置转动所需参数和回调函数
+    ele.rotate({
+      //起始角度
+      angle    : 0,
+      //转动角度 +1800是为了多转几圈
+      animateTo: prize["angle"] + 1800,
+      duration : 8000,
+      callback : function () {
+        window.location.href="./prize.html?i="+prize["type"];
+      }
+    });
+  }
+
+</script>
+</html>

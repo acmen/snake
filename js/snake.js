@@ -11,6 +11,7 @@ function snake(){
       animation: false,
       width: 0,
       height: 0,
+      is_flip: false,
       init_snake_length: 3,
       snake_conf: {
         head_width: 0,
@@ -35,10 +36,11 @@ function snake(){
       },
       food_list: [
         {
-          score: 1,
+          score: 5,
           img: "./img/game/green-pepper.png"
         }
       ],
+      food_add_probability: 10,
       init_obstacle_num: 2,
       obstacle_num: 20,
       obstacle_conf: {
@@ -51,6 +53,7 @@ function snake(){
           img: "./img/game/red-pepper.png"
         }
       ],
+      start_time: 0,
       run_time: -1,
       snake_head_data: {
 
@@ -91,6 +94,8 @@ function snake(){
       this.options.canvas.width = this.options.width;
       this.options.canvas.height = this.options.height;
       this.options.ctx = this.options.canvas.getContext("2d");
+
+      this.options.start_time = new Date().getTime();
 
 
       this.options.snake_conf.body_width = Math.floor(this.options.width / 20);
@@ -228,12 +233,24 @@ function snake(){
     start: function(_snake){
       this.options.canvas.addEventListener("touchstart", function(e){
         _snake.options.snake_conf.direction_data = [];
-        _snake.options.touch_conf.start_x = e.targetTouches[0].clientX;
-        _snake.options.touch_conf.start_y = e.targetTouches[0].clientY;
+        var x = e.targetTouches[0].clientX;
+        var y = e.targetTouches[0].clientY;
+        if(_snake.options.is_flip){
+          var tmp = x;
+          x = y;
+          y = _snake.options.width - tmp;
+        }
+        _snake.options.touch_conf.start_x = x;
+        _snake.options.touch_conf.start_y = y;
       });
       this.options.canvas.addEventListener("touchmove", function(e){
         var x = e.targetTouches[0].clientX;
         var y = e.targetTouches[0].clientY;
+        if(_snake.options.is_flip){
+          var tmp = x;
+          x = y;
+          y = _snake.options.width - tmp;
+        }
         if(Math.sqrt(Math.pow(x-_snake.options.touch_conf.start_x, 2) + Math.pow(y-_snake.options.touch_conf.start_y, 2)) > _snake.options.snake_conf.snake_body_distance){
           var x_gap = (x-_snake.options.touch_conf.start_x) / 4;
           var y_gap = (y-_snake.options.touch_conf.start_y) / 4;
@@ -253,6 +270,13 @@ function snake(){
     },
     run: function(_snake){
       var current_time = new Date().getTime();
+
+      // 判断游戏是否该结束
+      if(this.options.run_time > 0 && Math.floor((current_time - this.options.start_time) / 1000) > this.options.run_time){
+        this.stop_game();
+        return;
+      }
+
       if(current_time - this.options.last_draw_time > this.options.speed_time){
         this.options.last_draw_time = current_time;
         var gap = {
@@ -288,6 +312,12 @@ function snake(){
         if(4 * (this.options.init_snake_length - 1) + 1 < this.options.snake_data.length){
           this.options.snake_data.splice(0,1);
         }
+
+        // 生成食物
+        if(Math.floor(Math.random() * 1000) < this.options.food_add_probability){
+          this.build_food(1);
+        }
+
         this.options.ctx.clearRect(0,0, this.options.width, this.options.height);
         this.draw();
       }

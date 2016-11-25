@@ -281,3 +281,110 @@ body {
   width: 20%;
   left: 40%;
 }
+.share-score{
+  position: absolute;
+  top: 12%;
+  width: 100%;
+  left: 0;
+  height: 22%;
+}
+.share-text{
+  position: absolute;
+  top: 39.2%;
+  width: 100%;
+  left: 0;
+  height: 33.8%;
+}
+.share-btn{
+  position: absolute;
+  top: 75%;
+  width: 100%;
+  left: 0;
+  height: 8.8%;
+}
+.share-score .score-text{
+  position : absolute;
+  width: 100%;
+  height: 30%;
+  top:0;
+  left :0;
+}
+.share-score .score-val{
+  position : absolute;
+  width: 100%;
+  height: 60%;
+  top: 30%;
+  left : 0;
+  display: table;
+
+}
+.share-score .score-val span{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #00aaa5;
+  font-size: 5em;
+  font-weight: 800;
+}
+.share-score, .share-text, .share-btn{
+  text-align: center;
+}
+.share-score .score-text img, .share-text img, .share-btn img{
+  max-width: 100%;
+  height: 100%;
+}
+
+.mask{
+  position : fixed;
+  left :0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.share-tip{
+  position : absolute;
+  top:0;
+  left :0;
+  width: 30%;
+}
+
+.info-main{
+  position : absolute;
+  top: 11.8%;
+  left :25%;
+  width: 50%;
+  height: 74.4%;
+}
+.info-title{
+  position : absolute;
+  width: 100%;
+  height: 20.6%;
+  background: red;
+}
+.info-item{
+
+}
+
+/*大转盘*/
+.game-pan{
+  position : absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 80%;
+}
+.game-point{
+  position : absolute;
+  top: 17%;
+  left: 0;
+  width: 100%;
+  height: 33%;
+}
+.game-circle-btn{
+  position : absolute;
+  top: 46%;
+  left: 0;
+  width: 100%;
+  height: 8%;
+}
